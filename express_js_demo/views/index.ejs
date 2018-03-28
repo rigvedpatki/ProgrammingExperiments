@@ -1,0 +1,84 @@
+<% include partials/header %>
+
+    <h1 align="center" class="w3-cyan w3-myfont" style="text-shadow:1px 1px 0 #444"> Add Customer</h1>
+    <br>
+    <div align="center">
+        <div class="w3-container w3-red">
+            <% if(errors){%>
+                <ul>
+                    <% errors.forEach(error => { %>
+                        <li>
+                            <%= error.msg%>
+                        </li>
+                        <%        }) %>
+                </ul>
+                <% }%>
+        </div>
+        <br>
+        <br>
+        <form class="w3-container" method="POST" action="/user/add">
+            <table border="0" cellpadding="10" cellspacing="10" class="w3-table w3-card-4">
+                <tr>
+                    <td>
+                        <input type="text" name="firstName" placeholder="First Name" class="w3-input w3-myfont">
+                    </td>
+                    <td>
+                        <input type="text" name="lastName" placeholder="Last Name" class="w3-input w3-myfont">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="text" name="email" placeholder="Email address" size="47" class="w3-input w3-myfont">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" value="submit" class="w3-myfont w3-btn w3-round-xlarge w3-cyan">Add customer</button>
+                    </td>
+                </tr>
+            </table>
+    </div>
+    </form>
+
+    <div align="center">
+        <h1 align="center" class="w3-cyan w3-myfont" style="text-shadow:1px 1px 0 #444">
+            <%= title %>
+        </h1>
+        <table border="0" cellpadding="10" cellspacing="10" class="w3-table w3-card-4">
+            <th>
+                <td>
+                    <strong> First Name </strong>
+                </td>
+                <td>
+                    <strong> Last Name </strong>
+                </td>
+                <td>
+                    <strong> Email id</strong>
+                </td>
+                <td>
+                    <strong> Delete</strong>
+                </td>
+            </th>
+            <% users.forEach(user => { %>
+                <tr>
+                    <td></td>
+                    <td>
+                        <%= user.firstName %>
+                    </td>
+                    <td>
+                        <%= user.lastName%>
+                    </td>
+                    <td>
+                        <%= user.email%>
+                    </td>
+                    <td>
+                        <a href="#" class="deleteUser" data-id= "<%= user._id %>">
+                            <button type="button" class="w3-myfont w3-btn w3-round-xlarge w3-red"> Delete </button>
+                        </a>
+                    </td>
+                </tr>
+                <%})%>
+
+        </table>
+    </div>
+    <% include partials/footer %>
