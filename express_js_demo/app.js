@@ -50,7 +50,28 @@ app.use(
 };
 const people = [{ name: "Sara", age: 20 }, { name: "John", age: 45 }];
 people.push(person); */
-
+/* const users = [
+  {
+    firstName: "John",
+    lastName: "Doe",
+    email: "jpjndoe@gmail.com"
+  },
+  {
+    firstName: "Keith",
+    lastName: "Griffin",
+    email: "Kiethg@gmail.com"
+  },
+  {
+    firstName: "Andy",
+    lastName: "Summers",
+    email: "andsum@gmail.com"
+  },
+  {
+    firstName: "Kathy",
+    lastName: "Lewis",
+    email: "klewis@gmail.com"
+  }
+]; */
 app.get("/", (req, res) => {
   //res.json(people);
   //res.send("Hello World");
@@ -70,7 +91,16 @@ app.post("/user/add", (req, res) => {
   let newUser = null;
   if (errors) {
     console.log("Error");
-    res.render("index", { title: "Customers", users: users, errors: errors });
+    //res.render("index", { title: "Customers", users: users, errors: errors });
+    db.users.find(function(err, docs) {
+      // docs is an array of all the documents in mycollection
+      //console.log(docs);
+      res.render("index", {
+        title: "Customers",
+        users: docs,
+        errors: errors
+      });
+    });
   } else {
     newUser = {
       firstName: req.body.firstName,
