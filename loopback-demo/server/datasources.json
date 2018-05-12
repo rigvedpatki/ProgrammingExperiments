@@ -1,0 +1,12 @@
+{
+  "db": {
+    "host": "ds119150.mlab.com",
+    "port": 19150,
+    "url": "mongodb://admin:admin@ds119150.mlab.com:19150/loopback-demo",
+    "database": "loopback-demo",
+    "password": "admin",
+    "name": "db",
+    "user": "admin",
+    "connector": "mongodb"
+  }
+}
